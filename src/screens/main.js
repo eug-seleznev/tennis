@@ -17,9 +17,9 @@ const dispatch = useDispatch()
     <View style={styles.container}>
  
 
-      <Text>hello, it's MAINs</Text>
-      <Icon name="folder" color='#900' />
-      <Button  title='removeToken' onPress={()=>dispatch(logOut())} />
+      <Text>Main page</Text>
+     
+     
       
       
 

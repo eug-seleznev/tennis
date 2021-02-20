@@ -9,7 +9,7 @@ const Player = ({}) => {
     
     <View style={styles.container}>
 
-      <Text>hello, it's Projects</Text>
+      <Text>History of games, win rate</Text>
 
     </View>
   );

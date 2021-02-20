@@ -42,22 +42,20 @@ useEffect(() => {
   return (
     
     <View style={styles.container}>
-    {/* <View style={{position: 'absolute', left: 0, top: 0, height: 100, width: 100, backgroundColor: 'black', zIndex:999}}>
-          <Text style={{color: 'white'}}>absolute</Text>
-      </View> */}
-    {!isAuthenticated?  
-    <Login /> :
+
+    {/* {!isAuthenticated?  
+    <Login /> : */}
         <Tab.Navigator>
             <Tab.Screen name='Главная' >
               {props => <Main {...props} exit={()=>exit()}/>}
             </Tab.Screen>
 
             <Tab.Screen name='Статистика' component={Player} />
-            <Tab.Screen name='Играть' component={Game} />
+            <Tab.Screen name='Игра' component={Game} />
             <Tab.Screen name='Меню' component={Menu} />
         </Tab.Navigator>
   
-    }
+    {/* } */}
       
 
  
