@@ -1,0 +1,10 @@
+const initialState = {
+    profile: null,
+};
+
+
+
+
+
+
+

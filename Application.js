@@ -6,7 +6,6 @@ import { StyleSheet,  View } from 'react-native';
 
 import { setAuthToken } from './src/components/utils/axios';
 import Login from './src/components/login/login'
-import Main from './src/screens/main'
 
 import Menu from './src/screens/menu'
 import Game from './src/screens/Game';
@@ -40,28 +39,18 @@ useEffect(() => {
   
   
   return (
-    
     <View style={styles.container}>
-
-    {/* {!isAuthenticated?  
+      {/* {!isAuthenticated?  
     <Login /> : */}
-        <Tab.Navigator>
-            <Tab.Screen name='Главная' >
-              {props => <Main {...props} exit={()=>exit()}/>}
-            </Tab.Screen>
+      <Tab.Navigator>
+        <Tab.Screen name="Игра" component={Game} />
+        <Tab.Screen name="Статистика" component={Player} />
 
-            <Tab.Screen name='Статистика' component={Player} />
-            <Tab.Screen name='Игра' component={Game} />
-            <Tab.Screen name='Меню' component={Menu} />
-        </Tab.Navigator>
-  
-    {/* } */}
-      
+        <Tab.Screen name="Меню" component={Menu} />
+      </Tab.Navigator>
 
- 
-
-    </View>  
-    
+      {/* } */}
+    </View>
   );
 }
 
