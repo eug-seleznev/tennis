@@ -2,6 +2,7 @@ import {REGISTER, AUTH_ERROR, LOGIN, USER_LOADED,CHANGE_AVATAR,CLEAR_MSG,CLEAR_E
 import {innerBackend, instance, setAuthToken, url} from '../../components/utils/axios'
 
 import axios from 'axios'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 // LOAD USER 
@@ -73,7 +74,7 @@ export const login = (formData) => async dispatch  => {
 }
 
 
-export const register = ({formData}) => async dispatch  => {
+export const register = (formData) => async dispatch  => {
 
 
     try {
@@ -87,12 +88,12 @@ export const register = ({formData}) => async dispatch  => {
         })
         console.log('reg3')
 
-        //  setAuthToken(localStorage.token);
+         setAuthToken(AsyncStorage.getItem('token'));
         
       }
       catch (err) {
         const errors = err.response.data
- 
+        console.log('errror', errors)
     
            dispatch({
               type: AUTH_ERROR,

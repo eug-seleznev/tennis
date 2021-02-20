@@ -19,9 +19,7 @@ const [formData, setFormData ] = useState({
         
   email: '',
   login: '',
-  password: '',
-  name: '',
-  lastname: '',
+  pwd: '',
 
 });
 
@@ -61,7 +59,7 @@ const onSubmit = e => {
   return (
     
     <View style={styles.container}>
-        <Input
+        {/* <Input
             onChangeText={text=>setFormData({...formData, name: text})}
             value={formData.name}
             placeholder='Name'
@@ -70,7 +68,7 @@ const onSubmit = e => {
             onChangeText={text=>setFormData({...formData, lastname: text})}
             value={formData.lastname}
             placeholder='Lastname'
-        />
+        /> */}
         <Input
             onChangeText={text=>setFormData({...formData, email: text})}
             value={formData.email}
@@ -82,7 +80,7 @@ const onSubmit = e => {
             placeholder='Login'
         />
         <Input
-            onChangeText={text=>setFormData({...formData, password: text})}
+            onChangeText={text=>setFormData({...formData, pwd: text})}
             value={formData.password}
             placeholder='Password'
         />

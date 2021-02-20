@@ -2,7 +2,7 @@
 import axios from 'axios'
 import {REACT_APP_IP} from '@env'
 
-export const url = REACT_APP_IP;
+export const url = 'http://195.2.71.115:1488';
 console.log(url,'uuuuuuuuuuuuuu')
 
 

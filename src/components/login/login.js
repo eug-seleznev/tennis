@@ -31,7 +31,7 @@ const log = () => {
   console.log('bbb')
 
  
-//   // console.log( AsyncStorage, 'NEW TOKEN ')
+  console.log( AsyncStorage.getItem('token'), 'NEW TOKEN ')
 //  console.log(tok, 'getItem token')
 // token.then(res => setToken(res))
 // console.log(tokken, 'tokkkkkken')
