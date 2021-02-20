@@ -1,8 +1,8 @@
 
 import axios from 'axios'
-import {REACT_APP_IP} from '@env'
+import {APP_IP} from '@env'
 
-export const url = REACT_APP_IP;
+export const url = APP_IP;
 console.log(url,'uuuuuuuuuuuuuu')
 
 
