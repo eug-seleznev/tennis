@@ -41,7 +41,7 @@ export const login = (formData) => async dispatch  => {
     try {
       console.log(formData, 'data?')
       console.log(axios, 'axios')
-      const res = await instance.post('/auth', formData)
+      const res = await instance.post('/players/auth', formData)
 
 
 
@@ -77,12 +77,17 @@ export const register = ({formData}) => async dispatch  => {
 
 
     try {
-        const res = await instance.post('/users', formData)
+      console.log('reg1', formData)
+        const res = await instance.post('/players', formData)
+      console.log('reg2', res.data)
+
         dispatch({
             type: REGISTER,
             payload: res.data
         })
-         setAuthToken(localStorage.token);
+        console.log('reg3')
+
+        //  setAuthToken(localStorage.token);
         
       }
       catch (err) {
