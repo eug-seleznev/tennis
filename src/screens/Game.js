@@ -6,7 +6,6 @@ import {StyleSheet, Text, View} from 'react-native';
 import {APP_IP} from '@env';
 import MapView from 'react-native-maps';
 
-
 const Game = () => {
   const dispatch = useDispatch();
   console.log('hello')
