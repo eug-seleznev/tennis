@@ -26,7 +26,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const tokenBoulean = useSelector(state=> state.auth.token)
 const [isAuthenticated, setIsAuthenticated] = useState(false)
-
+const isProfile = useSelector((state) => state.player.isProfile);
 useEffect(() => {
     AsyncStorage.getItem('token').then(res => {
         setIsAuthenticated(res)
@@ -36,41 +36,63 @@ useEffect(() => {
 
     if(isAuthenticated){
       dispatch(loadUser());
-
     }
+
+    
 
 
   },[tokenBoulean])
-  
+  ///dev
+  // useEffect(() => {
+  //   AsyncStorage.removeItem('token')
+  // }, [])
   
   return (
     <View style={styles.container}>
-      {!isAuthenticated? 
+      
+        
+        
+      {!isAuthenticated ?
+     
       <Stack.Navigator>
           <Stack.Screen name='login' component={Login}/>
           <Stack.Screen name='registration' component={Registration}/>
-      </Stack.Navigator>  : 
-      <Profile />
-}
+      </Stack.Navigator>  :
+(
+      <>
+      {isProfile ?
+       
+      <Profile /> :
 
-    {/* <Profile/> */}
+          <Tab.Navigator>
+            <Tab.Screen name="Игра" component={Game} options={{
+              tabBarIcon: ({color,size}) => (<Icon name='tennis' color='black' size={24}/>)
+            }}/>
 
-      {/* <Tab.Navigator>
-        <Tab.Screen name="Игра" component={Game} options={{
-          tabBarIcon: ({color,size}) => (<Icon name='tennis' color='black' size={24}/>)
-        }}/>
+            <Tab.Screen name="Статистика" component={Player} options={{
+              tabBarIcon: ({color,size}) => (<Icon name='equalizer-outline' color='black' size={24}/>)
+            }}/>
 
-        <Tab.Screen name="Статистика" component={Player} options={{
-          tabBarIcon: ({color,size}) => (<Icon name='equalizer-outline' color='black' size={24}/>)
-        }}/>
+            <Tab.Screen name="Меню" component={Menu} options={{
+              tabBarIcon: ({color,size}) => (<Icon name='menu' color='black' size={24}/>)
+            }}/>
+          </Tab.Navigator>
 
-        <Tab.Screen name="Меню" component={Menu} options={{
-          tabBarIcon: ({color,size}) => (<Icon name='menu' color='black' size={24}/>)
-        }}/>
-      </Tab.Navigator> */}
+      }
+      </>
+)
 
-      {/* } */}
-    </View>
+      }
+
+
+</View>
+
+
+
+  
+
+      
+  
   );
 }
 

@@ -9,7 +9,7 @@ const Main = ({}) => {
     
     <View style={styles.container}>
 
-      <Text>hello, it's Menu</Text>
+      <Text>редактирование профиля, log out, выключить пассивыный поиск</Text>
 
     </View>
   );

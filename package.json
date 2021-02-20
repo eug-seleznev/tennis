@@ -18,6 +18,7 @@
     "axios": "^0.21.1",
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-24h-timepicker": "^1.1.0",
     "react-native-axios": "^0.17.1",
     "react-native-dotenv": "^2.5.3",
     "react-native-elements": "^3.2.0",

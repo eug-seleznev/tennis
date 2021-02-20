@@ -12,8 +12,13 @@ export const LOG_OUT ='log_out';
 /////////////////////////////
 
 
+////errors
 
+export const CLIENT_ERROR = 'form_error'
 
 
 
 ////PLAYER 
+
+
+export const EDIT_PROFILE = 'edit_player_profile';
