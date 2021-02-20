@@ -5,13 +5,15 @@ import {StyleSheet, Text, View, Button} from 'react-native';
 // import  storage  from '../../components/localStorage/storage';
 // import Icon from 'react-native-vector-icons/FontAwesome'
 import {Icon} from 'react-native-elements';
+import {APP_IP} from '@env';
 
 const Game = () => {
   const dispatch = useDispatch();
-
+  console.log('hello')
+  console.log(APP_IP);
   return (
     <View style={styles.container}>
-        <Text>Game</Text> 
+        <Text onClick={() => console.log('hello')}>Game</Text> 
     </View>
   );
 };
