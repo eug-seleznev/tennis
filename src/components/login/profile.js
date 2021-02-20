@@ -31,9 +31,6 @@ const [hrs, setHours] = useState({
 const onChange = (e) => {
   console.log(e.target)
 
-  setHours({
-    start: text.replace(/[^0-9]/g, ''),
-  });
 }
 
 const onSubmit = e => {
@@ -65,15 +62,13 @@ const onSubmit = e => {
         placeholder="Город"
         onChangeText={(text) => setFormData({...formData, city: text})}
       />
-  
-     
 
       <Input
         label="Часы игры"
+        keyboardType={'numeric'}
         onChangeText={onChange}
         placeholder="Часы игры WIP"
         value={hrs.start}
-        
       />
 
       <Button title="Подтвердить" onPress={onSubmit} />
