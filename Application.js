@@ -47,6 +47,7 @@ useEffect(() => {
         <Tab.Screen name="Игра" component={Game} options={{
           tabBarIcon: ({color,size}) => (<Icon name='tennis' color='black' size={24}/>)
         }}/>
+        
         <Tab.Screen name="Статистика" component={Player} options={{
           tabBarIcon: ({color,size}) => (<Icon name='equalizer-outline' color='black' size={24}/>)
         }}/>
