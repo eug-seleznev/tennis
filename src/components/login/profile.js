@@ -15,10 +15,10 @@ const [formData, setFormData ] = useState({
   name: '',
   lastname: '',
   city: '',
-  hours: [{
-    strart: 8,
+  hours: {
+    утро: false,
     end: 12
-  }],
+  },
 
 });
 

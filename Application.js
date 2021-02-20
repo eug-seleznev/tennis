@@ -60,7 +60,7 @@ useEffect(() => {
       </Stack.Navigator>  :
 (
       <>
-      {isProfile ?
+      {!isProfile ?
        
       <Profile /> :
 
