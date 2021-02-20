@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View} from 'react-native';
+import { ListItem } from 'react-native-elements';
 import { useDispatch, useSelector } from 'react-redux';
 import {myInfo, allPlayers} from '../redux/actions/player'
-
+import {DataTable} from 'react-native-paper'
+import { ScrollView } from 'react-native';
 const Player = () => {
   const playersList = useSelector(state=> state.player.allPlayers)
   const [find, setFind] = useState('all')
@@ -21,18 +23,26 @@ const Player = () => {
     
     <View style={styles.container}>
       
+      <DataTable.Header style={styles.header}>
+          <DataTable.Title>Игрок</DataTable.Title>
+          <DataTable.Title numeric>Рейтинг</DataTable.Title>
+      </DataTable.Header>
+      <ScrollView style={styles.table}>
+      <DataTable >
+      
       {!playersList?'':
         playersList.map ((el,i)=>{
           return(
-            <View key={i} style={styles.player} >
-              <Text>{el.name}</Text>
-              <Text>{el.rating}</Text>
-            </View>
+            <DataTable.Row key={i} style={styles.player} >
+              <DataTable.Cell>{el.name}</DataTable.Cell>
+              <DataTable.Cell numeric>{el.rating}</DataTable.Cell>
+         
+            </DataTable.Row>
           )
         })
       }
-    
-
+    </DataTable>
+    </ScrollView>
     </View>
   );
 }
@@ -40,22 +50,28 @@ export default Player
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#C4C4C4',
-      alignItems: 'center',
+      backgroundColor: 'white',
       justifyContent: 'center',
-      height:250,
-      overflow:'scroll'
+     
+      
+    },
+    header: {
+      display:'flex',
+      justifyContent: 'space-between',
+
+    },
+    table: {
+      height:'40%',
+     
     },
     player: {
       display:'flex',
       flexDirection:'row',
-      backgroundColor: '#C4C4C4',
+      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'space-between',
-      width:'80%',
-      borderBottomColor:'black',
-      borderTopWidth:1,
+      width:'100%',
+
       
     },
   
