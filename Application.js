@@ -29,8 +29,13 @@ const [isAuthenticated, setIsAuthenticated] = useState(false)
 const isProfile = useSelector((state) => state.player.isProfile);
 useEffect(() => {
     AsyncStorage.getItem('token').then(res => {
+      if (res) {
         setIsAuthenticated(res)
         setAuthToken(res)
+      } else if (!res) {
+        setIsAuthenticated(false)
+      }
+        
     }) 
 
 
