@@ -10,8 +10,9 @@ export const AUTH_ERROR ='auth_error';
 export const LOG_OUT ='log_out';
 
 /////////////////////////////
-
-
+//player
+export const MY_INFO ='my_info';
+export const ALL_PLAYERS ='all_players';
 ////errors
 
 export const CLIENT_ERROR = 'form_error'
