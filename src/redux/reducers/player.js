@@ -1,4 +1,4 @@
-import { EDIT_PROFILE } from "../types";
+import { EDIT_PROFILE, GET_PROFILE } from "../types";
 
 
 
@@ -26,6 +26,10 @@ export default function(state = initialState, action) {
             return {
                 profile: payload,
                 isProfile: true
+            }
+        case GET_PROFILE:
+            return {
+                profile: payload,
             }
         default:
             return {

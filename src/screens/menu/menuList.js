@@ -1,40 +1,28 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux'
 import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { editProfile, getProfile } from '../redux/actions/player';
 
-import Profile from '../components/login/profile'
-import MenuList from '../screens/menu/menuList'
+// import Profile from '../components/login/profile'
 
-const Menu = ({navigation}) => {
-const dispatch = useDispatch()
+const MenuList = ({navigation}) => {
 
   const Stack = createStackNavigator()
-  const profile = useSelector(state => state.player.profile)
-  console.log('ahahahah',profile)
-
-  const editPress = () => {
-    navigation.navigate('Edit')
-    dispatch(getProfile())
-  }
 
   return (
  
     <View style={styles.container}>
-         <Text>Меню тут</Text>
         <Text>Меню тут</Text>
         <Text>Меню тут</Text>
         <Text>Меню тут</Text>
         <Text>Меню тут</Text>
         <Text>Меню тут</Text>
         <Text>Меню тут</Text>
-        <Button title='Edit profile' onPress={editPress}/>
-       
+        <Text>Меню тут</Text>
+        <Button title='Edit profile' onPress={()=>navigation.navigate('Edit')}/>
     </View>
   );
 }
-export default Menu
+export default MenuList
 
 const styles = StyleSheet.create({
     container: {
