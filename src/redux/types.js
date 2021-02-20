@@ -23,3 +23,4 @@ export const CLIENT_ERROR = 'form_error'
 
 
 export const EDIT_PROFILE = 'edit_player_profile';
+export const GET_PROFILE = 'get_player_profile';

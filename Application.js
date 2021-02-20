@@ -29,7 +29,8 @@ const [isAuthenticated, setIsAuthenticated] = useState(false)
 const isProfile = useSelector((state) => state.player.isProfile);
 useEffect(() => {
     AsyncStorage.getItem('token').then(res => {
-        setIsAuthenticated(res)
+      
+        setIsAuthenticated(tokenBoulean)
         setAuthToken(res)
     }) 
 
@@ -73,9 +74,16 @@ useEffect(() => {
               tabBarIcon: ({color,size}) => (<Icon name='equalizer-outline' color='black' size={24}/>)
             }}/>
 
-            <Tab.Screen name="Меню" component={Menu} options={{
+            <Tab.Screen name="Меню"  options={{
               tabBarIcon: ({color,size}) => (<Icon name='menu' color='black' size={24}/>)
-            }}/>
+            }}>
+               {e => 
+               <Stack.Navigator>
+                <Stack.Screen name='Menu' component={Menu}/>
+                <Stack.Screen name='Edit' component={Profile}/>
+               </Stack.Navigator>
+               }
+            </Tab.Screen>
           </Tab.Navigator>
 
       }
