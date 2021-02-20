@@ -6,7 +6,7 @@ import { StyleSheet,  View } from 'react-native';
 
 import { setAuthToken } from './src/components/utils/axios';
 import Login from './src/components/login/login'
-import Main from './src/screens/Main'
+import Main from './src/screens/main'
 
 import Menu from './src/screens/menu'
 import Game from './src/screens/Game';
