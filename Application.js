@@ -14,6 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Player from './src/screens/Player';
 
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default function App() {
 const dispatch = useDispatch()
@@ -43,10 +44,16 @@ useEffect(() => {
       {/* {!isAuthenticated?  
     <Login /> : */}
       <Tab.Navigator>
-        <Tab.Screen name="Игра" component={Game} />
-        <Tab.Screen name="Статистика" component={Player} />
+        <Tab.Screen name="Игра" component={Game} options={{
+          tabBarIcon: ({color,size}) => (<Icon name='tennis' color='black' size={24}/>)
+        }}/>
+        <Tab.Screen name="Статистика" component={Player} options={{
+          tabBarIcon: ({color,size}) => (<Icon name='equalizer-outline' color='black' size={24}/>)
+        }}/>
 
-        <Tab.Screen name="Меню" component={Menu} />
+        <Tab.Screen name="Меню" component={Menu} options={{
+          tabBarIcon: ({color,size}) => (<Icon name='menu' color='black' size={24}/>)
+        }}/>
       </Tab.Navigator>
 
       {/* } */}
