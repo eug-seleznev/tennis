@@ -1,82 +1,88 @@
-import React, { useState, useEffect } from 'react';
-import {Provider, useDispatch, useSelector} from 'react-redux'
-import { login } from '../../redux/actions/auth'
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-// import  storage  from '../../components/localStorage/storage';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState } from 'react';
+import { useDispatch} from 'react-redux'
+import { StyleSheet,  View, Button , Text} from 'react-native';
 
 import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { editProfile } from '../../redux/actions/player';
 
 const Profile = () => {
 
 const dispatch = useDispatch()
-
-// const tokBoulean = useSelector(state=> state.auth.token)
-// const swit = token? true : false
  
 const [formData, setFormData ] = useState({
-        
-  email: '',
-  password: ''
-
+    
+  name: '',
+  lastname: '',
+  city: '',
+  hours: [{
+    strart: 8,
+    end: 12
+  }],
 
 });
 
+const [hrs, setHours] = useState({
+  start: '8',
+  end: '22'
+})
 
 
+const onChange = (e) => {
+  console.log(e.target)
 
-
-
-const log = () => {
-  console.log('bbb')
-
- 
-//   // console.log( AsyncStorage, 'NEW TOKEN ')
-//  console.log(tok, 'getItem token')
-// token.then(res => setToken(res))
-// console.log(tokken, 'tokkkkkken')
+  setHours({
+    start: text.replace(/[^0-9]/g, ''),
+  });
 }
 
-const onSubmit = async e => {
+const onSubmit = e => {
   e.preventDefault();
-  // console.log(formData)
-  dispatch(login(formData))
+  formData.hours.push(hrs)
+  
 
-      // register({ name, email, password});
-
-     
+  console.log(formData, 'formData')
+  dispatch(editProfile(formData))
   }
 
  
 
   return (
-    
     <View style={styles.container}>
- 
-        <Input 
-        placeholder='Имя Фамилия'
-        leftIcon={<Icon name='account' size={24} color='black'/>}
-        />
-      <TextInput
-        onChangeText={text=>setFormData({...formData, email: text})}
-        value={formData.email}
-        placeholder='e-mail'
+      <Text> Заполните профиль</Text>
+      <Input
+        placeholder="Имя"
+        onChangeText={(text) => setFormData({...formData, name: text})}
+        leftIcon={<Icon name="account" size={24} color="black" />}
       />
-      <TextInput
-        onChangeText={text=>setFormData({...formData, password: text})}
-        value={formData.password}
-        placeholder='password'
-      />
-      <Button title='Подтвердить' onPress={onSubmit} />
-      <Button title='log' onPress={log} />
-     
-  
 
+      <Input
+        placeholder="Фамилия"
+        onChangeText={(text) => setFormData({...formData, lastname: text})}
+      />
+
+      <Input
+        placeholder="Город"
+        onChangeText={(text) => setFormData({...formData, city: text})}
+      />
+  
+     
+
+      <Input
+        label="Часы игры"
+        onChangeText={onChange}
+        placeholder="Часы игры WIP"
+        value={hrs.start}
+        
+      />
+
+      <Button title="Подтвердить" onPress={onSubmit} />
     </View>
   );
 }
-export default Profile
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -87,3 +93,7 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
+
+export default Profile
