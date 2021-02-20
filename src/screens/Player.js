@@ -2,19 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 
 
-const Main = ({}) => {
+const Player = ({}) => {
 
 
   return (
     
     <View style={styles.container}>
 
-      <Text>hello, it's News</Text>
+      <Text>hello, it's Projects</Text>
 
     </View>
   );
 }
-export default Main
+export default Player
 
 const styles = StyleSheet.create({
     container: {

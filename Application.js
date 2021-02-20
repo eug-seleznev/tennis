@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import {Provider, useDispatch, useSelector} from 'react-redux'
-import { login } from './src/redux/actions/auth'
-import {loadUser} from './src/redux/actions/auth'
-import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-// import { Icon } from 'react-native-elements'
-import Icon from 'react-native-vector-icons/FontAwesome'
-import { setAuthToken } from './src/components/utils/axios';
+import { useDispatch, useSelector} from 'react-redux'
 
+import {loadUser} from './src/redux/actions/auth'
+import { StyleSheet,  View } from 'react-native';
+
+import { setAuthToken } from './src/components/utils/axios';
 import Login from './src/components/login/login'
-import Main from './src/screens/main'
-import Projects from './src/screens/projects'
-import News from './src/screens/news'
-import Profille from './src/screens/profile'
+import Main from './src/screens/Main'
+
 import Menu from './src/screens/menu'
+import Game from './src/screens/Game';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// import { Icon } from 'react-native-elements'
-// import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Player from './src/screens/Player';
 
 
 export default function App() {
@@ -44,8 +39,6 @@ useEffect(() => {
   },[tokenBoulean])
   
   
-  const mainIcon = <Icon name='g-translate' color='#00aced' size={24} />
-
   return (
     
     <View style={styles.container}>
@@ -58,9 +51,9 @@ useEffect(() => {
             <Tab.Screen name='Главная' >
               {props => <Main {...props} exit={()=>exit()}/>}
             </Tab.Screen>
-            <Tab.Screen name='Проекты' component={Projects} options={{tabBarIcon : ({ color, size }) => (<Icon name="rocket" color='#900' size={24}  />)}} />
-            <Tab.Screen name='Новости' component={News} />
-            <Tab.Screen name='Профиль' component={Profille} />
+
+            <Tab.Screen name='Статистика' component={Player} />
+            <Tab.Screen name='Играть' component={Game} />
             <Tab.Screen name='Меню' component={Menu} />
         </Tab.Navigator>
   
