@@ -13,7 +13,7 @@ const dispatch = useDispatch()
 
   const Stack = createStackNavigator()
   const profile = useSelector(state => state.player.profile)
-  console.log('ahahahah',profile)
+  // console.log('ahahahah',profile)
 
   const editPress = () => {
     navigation.navigate('Edit')
