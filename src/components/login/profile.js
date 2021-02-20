@@ -5,9 +5,10 @@ import { StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 // import  storage  from '../../components/localStorage/storage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { Input } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
-
-const Login = ({navigation}) => {
+const Profile = () => {
 
 const dispatch = useDispatch()
 
@@ -16,7 +17,7 @@ const dispatch = useDispatch()
  
 const [formData, setFormData ] = useState({
         
-  login: '',
+  email: '',
   password: ''
 
 
@@ -41,7 +42,6 @@ const onSubmit = async e => {
   e.preventDefault();
   // console.log(formData)
   dispatch(login(formData))
-  
 
       // register({ name, email, password});
 
@@ -54,11 +54,14 @@ const onSubmit = async e => {
     
     <View style={styles.container}>
  
-
+        <Input 
+        placeholder='Имя Фамилия'
+        leftIcon={<Icon name='account' size={24} color='black'/>}
+        />
       <TextInput
-        onChangeText={text=>setFormData({...formData, login: text})}
+        onChangeText={text=>setFormData({...formData, email: text})}
         value={formData.email}
-        placeholder='login'
+        placeholder='e-mail'
       />
       <TextInput
         onChangeText={text=>setFormData({...formData, password: text})}
@@ -66,7 +69,6 @@ const onSubmit = async e => {
         placeholder='password'
       />
       <Button title='Подтвердить' onPress={onSubmit} />
-      <Button title='Регистрация' onPress={() => navigation.navigate('registration')} />
       <Button title='log' onPress={log} />
      
   
@@ -74,7 +76,7 @@ const onSubmit = async e => {
     </View>
   );
 }
-export default Login
+export default Profile
 
 const styles = StyleSheet.create({
   container: {

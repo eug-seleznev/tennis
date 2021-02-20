@@ -20,6 +20,7 @@ export default function(state = initialState, action) {
 
     switch(type){
         case REGISTER:
+            console.log('reg reducer')
         case LOGIN:
             console.log(payload, 'payload token')
             //  storage.save({key:'token', data: payload.token});
