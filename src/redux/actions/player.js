@@ -49,9 +49,9 @@ export const myInfo = () => async (dispatch) => {
 
 
 
-export const editProfile = () => async (dispatch) => {
+export const editProfile = (formData) => async (dispatch) => {
   try {
-    const res = await innerBackend.put('/players/me/edit');
+    const res = await innerBackend.put('/players/me/edit', formData);
 
     dispatch({
       type: EDIT_PROFILE,
