@@ -1,4 +1,4 @@
-import { ALL_PLAYERS, EDIT_PROFILE, GET_PROFILE } from "../types";
+import { ALL_PLAYERS, EDIT_PROFILE, GET_PROFILE, MY_INFO } from "../types";
 
 
 
@@ -7,7 +7,8 @@ import { ALL_PLAYERS, EDIT_PROFILE, GET_PROFILE } from "../types";
 const initialState = {
     profile: null,
     isProfile: false,
-    allPlayers: []
+    allPlayers: [],
+    myInfo:[]
 };
 
 
@@ -35,6 +36,10 @@ export default function(state = initialState, action) {
         case GET_PROFILE:
             return {
                 profile: payload,
+            }
+        case MY_INFO:
+            return {
+                myInfo: payload,
             }
         default:
             return {
