@@ -13,7 +13,7 @@ import { Button } from 'react-native-paper';
 const Game = () => {
   const dispatch = useDispatch();
   const myInf = useSelector(state=> state.player.myInfo)
-  const [search, setSearch] = useState (false)
+  const [search, setSearch] = useState (myInf.ready)
   useEffect(()=>{
     dispatch(myInfo())
   },[])
