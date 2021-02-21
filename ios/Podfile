@@ -8,6 +8,8 @@ target 'BuroNative' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'BuroNativeTests' do
     inherit! :complete
     # Pods for testing

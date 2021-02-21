@@ -1,30 +1,37 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector} from 'react-redux';
-import { logOut} from '../redux/actions/auth';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 // import  storage  from '../../components/localStorage/storage';
 // import Icon from 'react-native-vector-icons/FontAwesome'
-import {Icon} from 'react-native-elements';
 import {APP_IP} from '@env';
+import MapView from 'react-native-maps';
+import {WebView} from 'react-native-webview';
+
 
 const Game = () => {
   const dispatch = useDispatch();
   console.log('hello')
   console.log(APP_IP);
   return (
-    <View style={styles.container}>
-        <Text onClick={() => console.log('hello')}>Game</Text> 
-    </View>
+    <WebView
+      source={{
+        uri: 'https://github.com/facebook/react-native',
+      }}
+      style={{marginTop: 20}}
+    />
   );
 };
 export default Game;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#C4C4C4',
+    ...StyleSheet.absoluteFillObject,
+    height: 400,
+    width: 400,
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  exitButton: {},
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
 });

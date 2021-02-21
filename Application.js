@@ -43,10 +43,7 @@ useEffect(() => {
 
 
   },[tokenBoulean])
-  ///dev
-  // useEffect(() => {
-  //   AsyncStorage.removeItem('token')
-  // }, [])
+
   
   return (
     <View style={styles.container}>
@@ -61,7 +58,7 @@ useEffect(() => {
       </Stack.Navigator>  :
 (
       <>
-      {isProfile ?
+      {!isProfile ?
        
       <Profile /> :
 
