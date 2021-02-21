@@ -92,9 +92,9 @@ const Player = () => {
   return (
     
     <View style={styles.container}> 
-    <Text style={{fontSize: 24}}>Рейтинг</Text>
+    <Text style={{fontSize: 24, alignSelf:'center'}}>Рейтинг</Text>
     <View style={styles.buttons_container}> 
-      <Button style={{width:'50%',paddingLeft:0}} color={find=='all'?'red':'black'} onPress={()=> {setFind('all')}}>Общий</Button>
+      <Button style={{width:'50%'}} color={find=='all'?'red':'black'} onPress={()=> {setFind('all')}}>Общий</Button>
       <Button  style={{width:'50%'}} color={find=='city'?'red':'black'} onPress={()=> {setFind('city'),setCity(myInf.city)}}>Городской</Button>
     </View>
     
