@@ -79,13 +79,26 @@ const onSubmit = e => {
           }
      
       
-      
+          {!lastNameEdit?
+          <View style={styles.textContainer}>
+              <Text style={styles.texts} >
+                {profile.lastname}
+              </Text> 
+              <Icon name='pencil-outline' size={24} color='black' onPress={()=>setLastName(true)} style={styles.icons} />
+          </View> :
+          <View style={styles.inputContainer}>
+              <Input
+                style={styles.inputs}
+                placeholder="Фамилия"
+                onChangeText={(text) => setFormData({...formData, lastname: text})}
+                leftIcon={<Icon name="account" size={24} color="black" />}
+              />
+              <Icon name='cancel' size={24} color='black' onPress={()=>setLastName(false)} style={styles.icons} />
+          </View> 
+          }
       
 
-      <Input
-        placeholder="Фамилия"
-        onChangeText={(text) => setFormData({...formData, lastname: text})}
-      />
+     
 
       <Input
         placeholder="Город"
@@ -136,7 +149,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 10,
     paddingLeft: 0,
-    paddingRight:40,
+    paddingRight:14,
+    justifyContent: 'center',
     height: 49,
     borderBottomWidth: 1,
     borderBottomColor: 'gray',
@@ -144,7 +158,7 @@ const styles = StyleSheet.create({
   },
   texts: {
     fontSize: 24,
-    marginVertical: 5,
+    marginVertical: 'auto',
   },
   inputs: {
     
