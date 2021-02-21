@@ -19,6 +19,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Player from './src/screens/Player';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { getProfile } from './src/redux/actions/player';
 
 
 export default function App() {
@@ -27,7 +28,11 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const tokenBoulean = useSelector(state=> state.auth.token)
 const [isAuthenticated, setIsAuthenticated] = useState(false)
-const isProfile = useSelector((state) => state.player.isProfile);
+const isProfile = useSelector((state) => state.player.profile);
+
+useEffect(()=>{
+  dispatch(getProfile())
+},[])
 useEffect(() => {
     AsyncStorage.getItem('token').then(res => {
       
