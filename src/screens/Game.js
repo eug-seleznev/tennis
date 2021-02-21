@@ -22,6 +22,7 @@ const Game = () => {
       dispatch(findMatch())
     }
   },[search])
+  let city = myInf.city    ///for maps
   console.log('hello')
   console.log(APP_IP);
   return (
@@ -29,7 +30,7 @@ const Game = () => {
       <View style={{height: '50%', overflowY: 'hidden'}}>
         <WebView
           source={{
-            uri: 'http://185.231.153.99:4010/',
+            uri: `http://185.231.153.99:4010/${city}`,
           }}
           style={{marginTop: 20}}
         />
@@ -49,9 +50,28 @@ const Game = () => {
             <Text style={styles.place}>55 в городе {myInf.city}</Text>
           </View>
         </View>
-        <Text style={{display:`${!search?'none':'flex'}`, fontSize: 30, alignSelf:'center', marginTop:40}}>Идет поиск соперника...</Text>
-        <Button mode={!search?"contained":"none"} style={styles.button} style={{ width:'75%',alignSelf: 'center', marginTop:14, marginTop:!search?75:0}} onPress={()=>{setSearch(!search)}}>
-        {!search?"Найти соперника":"Отменить поиск"}
+        <Text
+          style={{
+            display: `${!search ? 'none' : 'flex'}`,
+            fontSize: 30,
+            alignSelf: 'center',
+            marginTop: 40,
+          }}>
+          Идет поиск соперника...
+        </Text>
+        <Button
+          mode={!search ? 'contained' : 'none'}
+          style={styles.button}
+          style={{
+            width: '75%',
+            alignSelf: 'center',
+            marginTop: 14,
+            marginTop: !search ? 75 : 0,
+          }}
+          onPress={() => {
+            setSearch(!search);
+          }}>
+          {!search ? 'Найти соперника' : 'Отменить поиск'}
         </Button>
       </View>
     </View>
