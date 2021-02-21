@@ -15,6 +15,7 @@ const Player = () => {
       date:'20.10.20',
       number:'1488',
       rank:122,
+      city:'Simferopol'
     },
     {
       result:'win',
@@ -22,6 +23,7 @@ const Player = () => {
       date:'23.10.20',
       number:'1438',
       rank:557,
+      city:'Junkoy'
     },
     {
       result:'win',
@@ -29,6 +31,7 @@ const Player = () => {
       date:'27.10.20',
       number:'1418',
       rank:278,
+      city:'Junkoy'
     },
     {
       result:'win',
@@ -36,6 +39,7 @@ const Player = () => {
       date:'30.10.20',
       number:'1411',
       rank:222,
+      city:'Junkoy'
     },
     {
       result:'lose',
@@ -43,6 +47,7 @@ const Player = () => {
       date:'30.10.20',
       number:'1337',
       rank:15,
+      city:'Belogorsk'
     },
     {
       result:'lose',
@@ -50,6 +55,7 @@ const Player = () => {
       date:'30.10.20',
       number:'1334',
       rank:3,
+      city:'Junkoy'
     },
     {
       result:'lose',
@@ -57,6 +63,7 @@ const Player = () => {
       date:'30.10.20',
       number:'1333',
       rank:30,
+      city:'Simferopol'
     },
     {
       result:'win',
@@ -64,6 +71,7 @@ const Player = () => {
       date:'30.10.20',
       number:'1311',
       rank:156,
+      city:'Simferopol'
     }
   ]
   const [find, setFind] = useState('all')
@@ -130,7 +138,7 @@ const Player = () => {
       {!myGames?<Text>loading</Text>:
         myGames.map ((el,i)=>{
           return(
-            <DataTable.Row key={i} style={styles.player}>
+            <DataTable.Row key={i} style={styles.player} style={{display:`${find==='city'&&city!==el.city?'none':'flex'}`}}>
               <DataTable.Cell >#{el.number}   {el.date}</DataTable.Cell>
               <DataTable.Cell >#{el.rank} {el.enemy}</DataTable.Cell>
               <Text style={{color:`${el.result==='win'?'green':'red'}`}}  numeric>{el.result}</Text>
