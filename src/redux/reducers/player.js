@@ -26,19 +26,26 @@ export default function(state = initialState, action) {
     switch(type){
         case EDIT_PROFILE:
             return {
+                ...state,
                 profile: payload,
                 isProfile: true
             }
         case ALL_PLAYERS:
             return {
+                ...state,
+                isProfile: true,
                 allPlayers: payload,
             }
         case GET_PROFILE:
             return {
+                ...state,
+                isProfile: true,
                 profile: payload,
             }
         case MY_INFO:
             return {
+                ...state,
+                isProfile: true,
                 myInfo: payload,
             }
         default:
