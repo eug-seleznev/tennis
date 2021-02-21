@@ -5,7 +5,8 @@ import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { CheckBox } from 'react-native-elements'
 
-import { editProfile } from '../../redux/actions/player';
+import { editProfile, getProfile } from '../../redux/actions/player';
+
 import { useDispatch } from 'react-redux';
 
 const Profile = () => {
@@ -27,7 +28,9 @@ const [formData, setFormData ] = useState({
 });
 
 
-
+useEffect(()=>{
+  dispatch(getProfile())
+},[])
 
 const onSubmit = e => {
   e.preventDefault();
