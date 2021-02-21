@@ -27,10 +27,6 @@ const [formData, setFormData ] = useState({
 
 });
 
-const [hrs, setHours] = useState({
-  start: '8',
-  end: '22'
-})
 
 useEffect(()=>{
     console.log(formData.hours)
@@ -39,17 +35,10 @@ useEffect(()=>{
     console.log(profile)
 },[profile])
 
-const onChange = (e) => {
-  console.log(e.target)
-
-}
 
 const onSubmit = e => {
   e.preventDefault();
-  formData.hours.push(hrs)
-  
-
-  console.log(formData, 'formData')
+    console.log(formData, 'formData')
   dispatch(editProfile(formData))
   }
 
