@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector} from 'react-redux'
 import { StyleSheet,  View, Button , Text} from 'react-native';
 
@@ -13,11 +13,17 @@ const Profile = () => {
 const dispatch = useDispatch()
 const profile = useSelector(state => state.player.profile)
 
+const refName = useRef()
+const refLastname = useRef()
+const refCity = useRef()
+const refMorning = useRef()
+const refDay = useRef()
+const refEvening = useRef()
 
 const [formData, setFormData ] = useState({
-  name: profile? profile.name : '',
-  lastname: profile? profile.lastname :'',
-  city:profile? profile.city : '',
+  name:  '',
+  lastname: '',
+  city: '',
   hours: {
     morning:  false,
     day:  false,
@@ -32,11 +38,12 @@ const [hrs, setHours] = useState({
   end: '22'
 })
 
-useEffect(()=>{
-    console.log(formData.hours)
-},[formData])
+
 useEffect(()=>{
     console.log(profile)
+    refName.current.setNativeProps({value: profile.name})
+    refLastname.current.setNativeProps({value: profile.lastname})
+    refCity.current.setNativeProps({value: profile.city})
 },[profile])
 
 const onChange = (e) => {
@@ -64,31 +71,37 @@ const onSubmit = e => {
       <Text> Заполните профиль</Text>
       <Button title='получить данные' onPress={getData}/>
       <Input
+        ref={refName}
         placeholder="Имя"
         onChangeText={(text) => setFormData({...formData, name: text})}
         leftIcon={<Icon name="account" size={24} color="black" />}
       />
 
       <Input
+        ref={refLastname}
         placeholder="Фамилия"
         onChangeText={(text) => setFormData({...formData, lastname: text})}
       />
 
       <Input
+        ref={refCity}
         placeholder="Город"
         onChangeText={(text) => setFormData({...formData, city: text})}
       />
       <CheckBox
+        ref={refMorning}
         title='Morning'
         checked={formData.hours.morning}
         onPress={()=>setFormData({...formData, hours: {...formData.hours, morning: !formData.hours.morning}})}
       />
       <CheckBox
+        ref={refDay}
         title='Day'
         checked={formData.hours.day}
         onPress={()=>setFormData({...formData, hours: {...formData.hours, day: !formData.hours.day}})}
       />
       <CheckBox
+        ref={refEvening}
         title='Evening'
         checked={formData.hours.evening}
         onPress={()=>setFormData({...formData, hours: {...formData.hours, evening: !formData.hours.evening}})}
