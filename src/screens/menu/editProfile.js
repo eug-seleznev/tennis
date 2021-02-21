@@ -7,7 +7,7 @@ import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { CheckBox, Divider } from 'react-native-elements'
 
-import { editProfile } from '../../redux/actions/player';
+import { editProfile,myInfo } from '../../redux/actions/player';
 
 const Profile = () => {
 const dispatch = useDispatch()
@@ -52,6 +52,7 @@ const onSubmit = e => {
 
   console.log(formData, 'formData')
   dispatch(editProfile(formData))
+  dispatch(myInfo())
   }
 const cancel = (pla) =>{
 

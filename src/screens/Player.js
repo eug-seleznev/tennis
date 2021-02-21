@@ -92,8 +92,9 @@ const Player = () => {
   return (
     
     <View style={styles.container}> 
+    <Text style={{fontSize: 24}}>Рейтинг</Text>
     <View style={styles.buttons_container}> 
-      <Button style={{width:'50%'}} color={find=='all'?'red':'black'} onPress={()=> {setFind('all')}}>Общий</Button>
+      <Button style={{width:'50%',paddingLeft:0}} color={find=='all'?'red':'black'} onPress={()=> {setFind('all')}}>Общий</Button>
       <Button  style={{width:'50%'}} color={find=='city'?'red':'black'} onPress={()=> {setFind('city'),setCity(myInf.city)}}>Городской</Button>
     </View>
     
@@ -119,7 +120,7 @@ const Player = () => {
     </ScrollView>
     <View style={styles.table}>
       <View style={styles.top__info}>
-        <Text>История игр</Text>
+        <Text style={{fontSize: 24}}>История игр</Text>
         <Text>
           <Text style={{color:'green'}}>{myInf.win}</Text>/
           <Text style={{color:'red'}}>{myInf.defeat}</Text>
