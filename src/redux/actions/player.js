@@ -5,8 +5,9 @@ import { ALL_PLAYERS, CLIENT_ERROR, EDIT_PROFILE,MY_INFO, GET_PROFILE } from "..
 
 
 export const allPlayers = (find, city) => async (dispatch) => {
+  console.log(city,'resp')
   try {
-    const res = await innerBackend.get(`/players/find?field=${find='all'?find:find+'&value='+city}`);
+    const res = await innerBackend.get(`/players/find?field=${find==='all'?find:find+'&value='+city}`);
 
     dispatch({
       type: ALL_PLAYERS,

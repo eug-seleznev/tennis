@@ -32,7 +32,8 @@ const Player = () => {
     </View>
     
       <DataTable.Header style={styles.header}>
-          <DataTable.Title></DataTable.Title>
+        
+          <DataTable.Title>Игрок</DataTable.Title>
           <DataTable.Title numeric>Рейтинг</DataTable.Title>
       </DataTable.Header>
       <ScrollView style={styles.table}>
@@ -42,7 +43,8 @@ const Player = () => {
         playersList.map ((el,i)=>{
           return(
             <DataTable.Row key={i} style={styles.player}>
-              <DataTable.Cell>{el.name}</DataTable.Cell>
+              <DataTable.Cell style={{width:20}}>{i+1}</DataTable.Cell>
+              <DataTable.Cell>{el.fullname}</DataTable.Cell>
               <DataTable.Cell numeric>{el.rating}</DataTable.Cell>
             </DataTable.Row>
           )
