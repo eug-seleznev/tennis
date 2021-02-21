@@ -20,25 +20,32 @@ const Game = () => {
   console.log(APP_IP);
   return (
     <View>
-      <View style={{height:'50%',overflowY:'hidden'}}>
+      <View style={{height: '50%', overflowY: 'hidden'}}>
         <WebView
           source={{
-            uri: 'https://github.com/facebook/react-native',
+            uri: 'http://185.231.153.99:4010/',
           }}
           style={{marginTop: 20}}
         />
       </View>
-      <View  style={{height:'50%',backgroundColor:'white',zIndex:1}}>
-          <View style={styles.my_data}>
-            <Image style={styles.avatar} source={{uri: 'https://upload.wikimedia.org/wikipedia/commons/8/8e/Roger_Federer_2012_Indian_Wells.jpg'}}></Image>
-            <View style={styles.text_data}>
-              <Text style={styles.name}>{myInf.fullname}</Text>
-              <Text style={styles.rating}>Мой рейтинг: {myInf.rating}</Text>
-              <Text style={styles.place}>2555 в мире</Text>
-              <Text style={styles.place}>55 в городе {myInf.city}</Text>
-            </View>
+      <View style={{height: '50%', backgroundColor: 'white', zIndex: 1}}>
+        <View style={styles.my_data}>
+          <Image
+            style={styles.avatar}
+            source={{
+              uri:
+                'https://upload.wikimedia.org/wikipedia/commons/8/8e/Roger_Federer_2012_Indian_Wells.jpg',
+            }}></Image>
+          <View style={styles.text_data}>
+            <Text style={styles.name}>{myInf.fullname}</Text>
+            <Text style={styles.rating}>Мой рейтинг: {myInf.rating}</Text>
+            <Text style={styles.place}>2555 в мире</Text>
+            <Text style={styles.place}>55 в городе {myInf.city}</Text>
           </View>
-          <Button mode="contained" style={styles.button}>Найти соперника</Button>
+        </View>
+        <Button mode="contained" style={styles.button}>
+          Найти соперника
+        </Button>
       </View>
     </View>
   );
