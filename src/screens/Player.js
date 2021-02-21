@@ -79,7 +79,7 @@ const Player = () => {
   let dispatch = useDispatch()
   useEffect(()=>{
     dispatch(myInfo())
-   
+    dispatch(allPlayers(find))
   },[])
   useEffect(()=>{
     console.log(myInf,'myInfo')
@@ -123,7 +123,7 @@ const Player = () => {
         <Text>
           <Text style={{color:'green'}}>{myInf.win}</Text>/
           <Text style={{color:'red'}}>{myInf.defeat}</Text>
-          <Text style={{color:`${myInf.win/myInf.defeat*100>50?'green':'red'}`}}> {myInf.win/myInf.defeat*100+'%'}</Text>
+          <Text style={{color:`${myInf.win/(myInf.defeat+myInf.win)*100>50?'green':'red'}`}}>  {Math.trunc(myInf.win/(myInf.defeat+myInf.win)*100)}%</Text>
         </Text>
       </View>
       <DataTable.Header style={styles.header}>
@@ -141,7 +141,7 @@ const Player = () => {
             <DataTable.Row key={i} style={styles.player} style={{display:`${find==='city'&&city!==el.city?'none':'flex'}`}}>
               <DataTable.Cell >#{el.number}   {el.date}</DataTable.Cell>
               <DataTable.Cell >#{el.rank} {el.enemy}</DataTable.Cell>
-              <Text style={{color:`${el.result==='win'?'green':'red'}`}}  numeric>{el.result}</Text>
+              <Text style={{marginTop:14, color:`${el.result==='win'?'green':'red'}`}}  numeric>{el.result}</Text>
             </DataTable.Row>
           )
         })
