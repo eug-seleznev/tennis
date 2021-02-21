@@ -8,6 +8,7 @@ import { setAuthToken } from './src/components/utils/axios';
 import Login from './src/components/login/login'
 import Registration from './src/components/login/registration'
 import Profile from './src/components/login/profile'
+import EditProfile from './src/screens/menu/editProfile'
 
 import Menu from './src/screens/menu'
 import Game from './src/screens/Game';
@@ -18,6 +19,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Player from './src/screens/Player';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { getProfile } from './src/redux/actions/player';
 
 
 export default function App() {
@@ -26,7 +28,11 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const tokenBoulean = useSelector(state=> state.auth.token)
 const [isAuthenticated, setIsAuthenticated] = useState(false)
-const isProfile = useSelector((state) => state.player.isProfile);
+const isProfile = useSelector((state) => state.player.profile);
+
+useEffect(()=>{
+  dispatch(getProfile())
+},[])
 useEffect(() => {
     AsyncStorage.getItem('token').then(res => {
       
@@ -77,7 +83,7 @@ useEffect(() => {
                {e => 
                <Stack.Navigator>
                 <Stack.Screen name='Menu' component={Menu}/>
-                <Stack.Screen name='Edit' component={Profile}/>
+                <Stack.Screen name='Edit' component={EditProfile}/>
                </Stack.Navigator>
                }
             </Tab.Screen>

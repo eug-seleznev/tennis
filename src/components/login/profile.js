@@ -1,57 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector} from 'react-redux'
 import { StyleSheet,  View, Button , Text} from 'react-native';
 
 import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { CheckBox } from 'react-native-elements'
 
-import { editProfile, getProfile } from '../../redux/actions/player';
+import { editProfile } from '../../redux/actions/player';
+import { useDispatch } from 'react-redux';
 
 const Profile = () => {
-
 const dispatch = useDispatch()
-const profile = useSelector(state => state.player.profile)
+
 
 
 const [formData, setFormData ] = useState({
-  name: profile? profile.name : '',
-  lastname: profile? profile.lastname :'',
-  city:profile? profile.city : '',
+  name: '',
+  lastname: '',
+  city: '',
   hours: {
-    morning:  false,
-    day:  false,
-    evening:  false,
-    // profile? profile.hours.evening :
+    morning: false,
+    day: false,
+    evening: false,
+   
   },
 
 });
 
 
-useEffect(()=>{
-    console.log(formData.hours)
-},[formData])
-useEffect(()=>{
-    console.log(profile)
-},[profile])
 
 
 const onSubmit = e => {
   e.preventDefault();
-    console.log(formData, 'formData')
+
+  
+
+  console.log(formData, 'formData')
   dispatch(editProfile(formData))
   }
 
-  const getData = e => {
-    e.preventDefault();
-
-    dispatch(getProfile())
-    }
 
   return (
     <View style={styles.container}>
       <Text> Заполните профиль</Text>
-      <Button title='получить данные' onPress={getData}/>
+      
       <Input
         placeholder="Имя"
         onChangeText={(text) => setFormData({...formData, name: text})}

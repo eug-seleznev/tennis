@@ -3,8 +3,7 @@ import axios from 'axios'
 import {APP_IP} from '@env'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// export const url = 'http://195.2.71.115:1488';
-export const url = 'http://192.168.0.15:1488';
+export const url = 'http://195.2.71.115:1488';
 console.log(url,'uuuuuuuuuuuuuu')
 
 
