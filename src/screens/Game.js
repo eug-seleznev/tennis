@@ -6,16 +6,22 @@ import {StyleSheet, Text, View,Image} from 'react-native';
 import {APP_IP} from '@env';
 import MapView from 'react-native-maps';
 import {WebView} from 'react-native-webview';
-import { myInfo } from '../redux/actions/player';
+import { myInfo, findMatch } from '../redux/actions/player';
 import { Button } from 'react-native-paper';
 
 
 const Game = () => {
   const dispatch = useDispatch();
   const myInf = useSelector(state=> state.player.myInfo)
+  const [search, setSearch] = useState (false)
   useEffect(()=>{
     dispatch(myInfo())
   },[])
+  useEffect(()=>{
+    if(search) {
+      dispatch(findMatch())
+    }
+  },[search])
   console.log('hello')
   console.log(APP_IP);
   return (
@@ -43,8 +49,9 @@ const Game = () => {
             <Text style={styles.place}>55 в городе {myInf.city}</Text>
           </View>
         </View>
-        <Button mode="contained" style={styles.button}>
-          Найти соперника
+        <Text style={{display:`${!search?'none':'flex'}`, fontSize: 30, alignSelf:'center', marginTop:40}}>Идет поиск соперника...</Text>
+        <Button mode={!search?"contained":"none"} style={styles.button} style={{ width:'75%',alignSelf: 'center', marginTop:14, marginTop:!search?75:0}} onPress={()=>{setSearch(!search)}}>
+        {!search?"Найти соперника":"Отменить поиск"}
         </Button>
       </View>
     </View>
@@ -66,12 +73,9 @@ const styles = StyleSheet.create({
     zIndex:1,
     borderRadius:100,
     marginStart:10,
+    marginTop:10,
   },
-  button: {
-    width:'75%',
-    alignSelf: 'center',
-    marginTop:75
-  },
+
   my_data: {
     display:'flex',
     flexDirection:'row',

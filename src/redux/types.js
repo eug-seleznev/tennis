@@ -17,7 +17,7 @@ export const ALL_PLAYERS ='all_players';
 
 export const CLIENT_ERROR = 'form_error'
 
-
+export const FIND_GAME = 'find_game'
 
 ////PLAYER 
 
