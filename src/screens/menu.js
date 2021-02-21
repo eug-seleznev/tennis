@@ -6,7 +6,6 @@ import { editProfile, getProfile } from '../redux/actions/player';
 import { logOut } from '../redux/actions/auth'
 
 import Profile from '../components/login/profile'
-import MenuList from '../screens/menu/menuList'
 
 const Menu = ({navigation}) => {
 const dispatch = useDispatch()

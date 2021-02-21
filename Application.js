@@ -8,6 +8,7 @@ import { setAuthToken } from './src/components/utils/axios';
 import Login from './src/components/login/login'
 import Registration from './src/components/login/registration'
 import Profile from './src/components/login/profile'
+import EditProfile from './src/screens/menu/editProfile'
 
 import Menu from './src/screens/menu'
 import Game from './src/screens/Game';
@@ -77,7 +78,7 @@ useEffect(() => {
                {e => 
                <Stack.Navigator>
                 <Stack.Screen name='Menu' component={Menu}/>
-                <Stack.Screen name='Edit' component={Profile}/>
+                <Stack.Screen name='Edit' component={EditProfile}/>
                </Stack.Navigator>
                }
             </Tab.Screen>
