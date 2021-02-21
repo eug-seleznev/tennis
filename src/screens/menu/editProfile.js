@@ -5,7 +5,7 @@ import { StyleSheet,  View, Button , Text} from 'react-native';
 
 import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { CheckBox } from 'react-native-elements'
+import { CheckBox, Divider } from 'react-native-elements'
 
 import { editProfile } from '../../redux/actions/player';
 
@@ -16,7 +16,7 @@ const profile = useSelector(state => state.player.profile)
 
 const [nameEdit, setName] = useState(false)
 const [lastNameEdit, setLastName] = useState(false)
-const [cityEdit, setSity] = useState(false)
+const [cityEdit, setCity] = useState(false)
 
 const [formData, setFormData ] = useState({
   name: '',
@@ -53,11 +53,16 @@ const onSubmit = e => {
   console.log(formData, 'formData')
   dispatch(editProfile(formData))
   }
+const cancel = (pla) =>{
 
+  pla=='name' && (setFormData({...formData, name: profile.name}), setName(false))
+  pla=='lastname' && (setFormData({...formData, lastname: profile.lastname}), setLastName(false))
+  pla=='city' && (setFormData({...formData, city: profile.city}), setCity(false))
+}
 
   return (
     <View style={styles.container}>
-      <Text > Заполните профиль</Text>
+      <Text style={styles.titles}> Заполните профиль</Text>
       
      
           {!nameEdit?
@@ -69,12 +74,11 @@ const onSubmit = e => {
           </View> :
           <View style={styles.inputContainer}>
               <Input
-                style={styles.inputs}
                 placeholder="Имя"
                 onChangeText={(text) => setFormData({...formData, name: text})}
-                leftIcon={<Icon name="account" size={24} color="black" />}
+                // leftIcon={<Icon name="account" size={24} color="black" />}
               />
-              <Icon name='cancel' size={24} color='black' onPress={()=>setName(false)} style={styles.icons} />
+              <Icon name='cancel' size={24} color='black' onPress={()=>cancel('name')} style={styles.icons} />
           </View> 
           }
      
@@ -88,22 +92,35 @@ const onSubmit = e => {
           </View> :
           <View style={styles.inputContainer}>
               <Input
-                style={styles.inputs}
                 placeholder="Фамилия"
                 onChangeText={(text) => setFormData({...formData, lastname: text})}
-                leftIcon={<Icon name="account" size={24} color="black" />}
+                // leftIcon={<Icon name="account" size={24} color="black" />}
               />
-              <Icon name='cancel' size={24} color='black' onPress={()=>setLastName(false)} style={styles.icons} />
+              <Icon name='cancel' size={24} color='black' onPress={()=>cancel('lastname')} style={styles.icons} />
           </View> 
           }
-      
 
-     
 
-      <Input
-        placeholder="Город"
-        onChangeText={(text) => setFormData({...formData, city: text})}
-      />
+          {!cityEdit?
+          <View style={styles.textContainer}>
+              <Text style={styles.texts} >
+                {profile.city}
+              </Text> 
+              <Icon name='pencil-outline' size={24} color='black' onPress={()=>setCity(true)} style={styles.icons} />
+          </View> :
+          <View style={styles.inputContainer}>
+              <Input
+                placeholder="Город"
+                onChangeText={(text) => setFormData({...formData, city: text})}
+                // leftIcon={<Icon name="account" size={24} color="black" />}
+              />
+              <Icon name='cancel' size={24} color='black' onPress={()=>cancel('city')} style={styles.icons} />
+          </View> 
+          }
+
+
+      <Text style={styles.titles}>Выберите удобное для игры время</Text>
+      <View style={styles.timeBox}>
       <CheckBox
         title='Morning'
         checked={formData.hours.morning}
@@ -119,9 +136,11 @@ const onSubmit = e => {
         checked={formData.hours.evening}
         onPress={()=>setFormData({...formData, hours: {...formData.hours, evening: !formData.hours.evening}})}
       />
+      </View>
+      
      
 
-      <Button title="Подтвердить" onPress={onSubmit} />
+      <Button title="Подтвердить" onPress={onSubmit}/>
     </View>
   );
 }
@@ -133,24 +152,29 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingHorizontal: 10,
+    paddingVertical: 10,
     
+  },
+  titles:{
+    marginVertical: 15,
+    fontSize: 18,
   },
   textContainer: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginHorizontal: 10,
     borderBottomWidth: .7,
-    // paddingVertical: 5,
+    height: 49,
+    alignItems: 'center',
   },
   inputContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: 10,
     paddingLeft: 0,
     paddingRight:14,
     justifyContent: 'center',
+    // alignItems: 'center'
     height: 49,
     borderBottomWidth: 1,
     borderBottomColor: 'gray',
@@ -160,13 +184,18 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginVertical: 'auto',
   },
-  inputs: {
-    
+
+  icons: {
+    alignSelf: 'center',
+  },
+  timeBox: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 20,
 
   },
-  icons: {
-    marginVertical: 5,
-  }
+ 
 
 });
 
