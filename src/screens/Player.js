@@ -79,7 +79,7 @@ const Player = () => {
   let dispatch = useDispatch()
   useEffect(()=>{
     dispatch(myInfo())
-   
+    dispatch(allPlayers(find))
   },[])
   useEffect(()=>{
     console.log(myInf,'myInfo')
