@@ -55,6 +55,8 @@ const onSubmit = e => {
   dispatch(editProfile(formData))
   dispatch(allPlayers(find='all',city=false))
   navigation.navigate('Menu')
+    dispatch(myInfo());
+
   }
 const cancel = (pla) =>{
 
