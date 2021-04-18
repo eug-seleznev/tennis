@@ -8,8 +8,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { CheckBox, Divider } from 'react-native-elements'
 
 import { editProfile } from '../../redux/actions/player';
+import {myInfo, allPlayers} from '../../redux/actions/player'
 
-const Profile = () => {
+const Profile = ({navigation}) => {
 const dispatch = useDispatch()
 
 const profile = useSelector(state => state.player.profile)
@@ -52,6 +53,8 @@ const onSubmit = e => {
 
   console.log(formData, 'formData')
   dispatch(editProfile(formData))
+  dispatch(allPlayers(find='all',city=false))
+  navigation.navigate('Menu')
   }
 const cancel = (pla) =>{
 
